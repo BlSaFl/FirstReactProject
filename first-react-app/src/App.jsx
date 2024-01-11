@@ -10,13 +10,13 @@ function Square({value, onSquareClick}) {
 
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
-  //In diesem Anwendungsfall lieber binär entscheiden und nicht mir Strings
+  //In diesem Anwendungsfall lieber binär entscheiden und nicht mit Strings
   //const [tag, setTag] = useState("X");
   const [xIsNext, setXIsNext] = useState(true);
 
   function handleClick(i) {
     const nextSquares = squares.slice();
-    if(nextSquares[i] == null || calculateWinner(squares) == null) {
+    if(nextSquares[i] == null && calculateWinner(squares) == null) {
       /* Erste Lösung:
       nextSquares[i] = tag;
       if(tag=="X") {
@@ -56,7 +56,7 @@ export default function Board() {
     }
     return null;
   }
-
+  //Check für Statusleiste über Spielebrett
   let winner = calculateWinner(squares);
   let status;
   if (winner) {

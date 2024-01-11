@@ -6,6 +6,7 @@
 }
 body{
   background-color: var(--grey);
+  margin: 0;
 }
 main {
   height: 100vh;
@@ -14,11 +15,11 @@ main {
   justify-content: center;
   align-items: center;
 }
-main > div {
-
-  max-height: 24px;
+header {
+  color: var(--lightBlue);
+  text-decoration: underline;
+  margin-bottom: 1em;
 }
-header {color: var(--lightBlue)}
 button {
   background-color: var(--lightGrey);
   min-height: 23px;
