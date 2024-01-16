@@ -20,10 +20,17 @@ header {
   text-decoration: underline;
   margin-bottom: 1em;
 }
+section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 button {
   background-color: var(--lightGrey);
-  min-height: 23px;
-  min-width: 20px;
+  min-height: 25px;
+  min-width: 25px;
   border-radius: 2px;
-  margin: 1px;
+  margin: 1px auto;
+  vertical-align: top;
+  flex-basis: 33.333%;
 }
