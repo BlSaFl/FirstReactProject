@@ -1,23 +1,14 @@
 import { Square } from './Square.jsx';
 import { useState } from 'react';
+import useBoard from '../businessLogic/useBoard.jsx';
 
 export function Board() {
     const [squares, setSquares] = useState(Array(9).fill(null));
-    //In diesem Anwendungsfall lieber binär entscheiden und nicht mit Strings
-    //const [tag, setTag] = useState("X");
     const [isFirstPlayer, setIsFirstPlayer] = useState(true);
   
     function handleClick(i) {
       const nextSquares = squares.slice();
       if(nextSquares[i] == null && calculateWinner(squares) == null) {
-        /* Erste Lösung:
-        nextSquares[i] = tag;
-        if(tag=="X") {
-          setTag("O");
-        } else { 
-          setTag("X")
-        }*/
-        //Zweite Lösung:
         if (isFirstPlayer) {
           nextSquares[i] = "X"
         } else {
@@ -57,54 +48,21 @@ export function Board() {
     } else {
       status = "Next player: " + (isFirstPlayer ? "X" : "O");
     }
-  
 
-
-    function NewBoardRow (length, iteration) {
-        const tmp = [];
-        for (var i=0; i < length; i++ ) {
-            let index = i+iteration*3;
-            tmp.push(<Square value={squares[index]} onSquareClick={() => handleClick(index)}></Square>);
-        }
-        console.log(tmp);
-        return (<div>{tmp}</div>);
-    }
-
-    function NewBoard ({size}) {
+    function Field ({size}) {
         const tmp = [];
         for (var i=0; i < size; i++ ) {
-            tmp.push(NewBoardRow(size, i))
+            let index = i;  //Muss als Middleman fungieren, sonst geht onClick nicht
+            tmp.push(<Square value={squares[index]} onSquareClick={() => handleClick(index)}></Square>)
         }
         console.log(tmp);
-        return (<>{tmp}</>);
+        return (<section>{tmp}</section>);
     }
 
     return (
         <main>
             <header>{ status }</header>
-            <section><NewBoard size={3}/></section>
+            <Field size={9}/>
         </main>
     );
   }
-  
-  
-  /*
-    
-    <div className='tikTakToe'>
-        <div>
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)}></Square>
-        <Square value={squares[1]} onSquareClick={() => handleClick(1)}></Square>
-        <Square value={squares[2]} onSquareClick={() => handleClick(2)}></Square>
-        </div>
-        <div>
-        <Square value={squares[3]} onSquareClick={() => handleClick(3)}></Square>
-        <Square value={squares[4]} onSquareClick={() => handleClick(4)}></Square>
-        <Square value={squares[5]} onSquareClick={() => handleClick(5)}></Square>
-        </div>
-        <div>
-        <Square value={squares[6]} onSquareClick={() => handleClick(6)}></Square>
-        <Square value={squares[7]} onSquareClick={() => handleClick(7)}></Square>
-        <Square value={squares[8]} onSquareClick={() => handleClick(8)}></Square>
-        </div>     
-    </div>   
-  */
