@@ -2,7 +2,7 @@ import Square from './Square.jsx';
 import { useEffect, useState } from 'react';
 import { useBoard } from '../businessLogic/useBoard.jsx';
 
-
+//Needs css
 export function Board() {
   const { handleClick, gameStatus, boardSquares } = useBoard("O");
 
