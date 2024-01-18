@@ -20,13 +20,13 @@ header {
   text-decoration: underline;
   margin-bottom: 1em;
 }
-/* Für neue Architektur mit Button ohne Reihen
 section {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  height: 150px;
+  width: 150px;
 }
-*/
 button {
   background-color: var(--lightGrey);
   min-height: 25px;
@@ -34,5 +34,5 @@ button {
   border-radius: 2px;
   margin: 1px auto;
   vertical-align: top;
-  /*flex-basis: 33.333%;*/
+  flex-basis: 33.333%;
 }

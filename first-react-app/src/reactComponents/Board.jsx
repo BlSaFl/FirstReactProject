@@ -1,11 +1,23 @@
 import { Square } from './Square.jsx';
 import { useState } from 'react';
-import useBoard from '../businessLogic/useBoard.jsx';
+//import useBoard from '../businessLogic/useBoard.jsx';
 
 export function Board() {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [isFirstPlayer, setIsFirstPlayer] = useState(true);
-  
+
+    function Field ({size}) {
+        const tmp = [];
+        for (var i=0; i < size; i++ ) {
+            let index = i;  //Muss als Middleman fungieren, sonst geht onClick nicht
+            tmp.push(<Square value={squares[index]} onSquareClick={() => handleClick(index)}></Square>)
+        }
+        console.log(tmp);
+        return (<section>{tmp}</section>);
+    }
+
+    //let {Field, sieger, setSquareValue, currentPlayer, reset} = useBoard;
+
     function handleClick(i) {
       const nextSquares = squares.slice();
       if(nextSquares[i] == null && calculateWinner(squares) == null) {
@@ -48,16 +60,7 @@ export function Board() {
     } else {
       status = "Next player: " + (isFirstPlayer ? "X" : "O");
     }
-
-    function Field ({size}) {
-        const tmp = [];
-        for (var i=0; i < size; i++ ) {
-            let index = i;  //Muss als Middleman fungieren, sonst geht onClick nicht
-            tmp.push(<Square value={squares[index]} onSquareClick={() => handleClick(index)}></Square>)
-        }
-        console.log(tmp);
-        return (<section>{tmp}</section>);
-    }
+    
 
     return (
         <main>
@@ -65,4 +68,4 @@ export function Board() {
             <Field size={9}/>
         </main>
     );
-  }
+}
