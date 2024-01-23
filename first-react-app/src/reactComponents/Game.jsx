@@ -3,7 +3,7 @@ import { Board } from "./Board.jsx";
 import { useGame } from "../businessLogic/useGame.jsx";
 
 export function Game() {
-  const { isFirstPlayer, history, currentBoardSquares, handlePlay } = useGame();
+  const { isFirstPlayer, history, currentBoardSquares, handlePlay, moves } = useGame();
 
   return (
     <div id="game">
@@ -11,7 +11,7 @@ export function Game() {
         <Board isFirstPlayer={isFirstPlayer} boardSquares={currentBoardSquares} onPlay={handlePlay} />
       </div>
       <div>
-        <ol>{history}</ol>
+        <ol>{moves}</ol>
       </div>
     </div>
   );

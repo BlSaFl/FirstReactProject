@@ -53,9 +53,9 @@ export function useBoard({isFirstPlayer, onPlay, boardSquares}) {
   const boardGameStatus = () => {
     if (calculateWinner(boardSquares)) {
       setStatus("Winner: " + winner);
-    } else if (boardSquares.filter((word) => word == null) == []) {
+    }/* else if (boardSquares.filter((word) => word == null) == []) {
       setStatus("Game Over");
-    } else {
+    }*/ else {
       setStatus("Next player: " + (isFirstPlayer ? "X" : "O"));
     }
   };

@@ -3,40 +3,68 @@
   --lightGrey: #aeaeae;
   --lightBlue: rgb(116, 199, 235);
   --knallViolett: rgb(108, 31, 126);
+  --transparentGrey: rgba(100, 100, 100, 0.95);
 }
-body{
+
+body {
   background-color: var(--grey);
   margin: 0;
 }
+
 #game {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background: linear-gradient(315deg, rgb(100, 20, 20) 0%, rgb(20, 20, 20) 70%);
 }
-main {
+
+#game main {
+  height: 100vh;
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+#game>div:nth-child(2) {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+}
+
+#gameOver {
+  visibility: collapse;
+  position: absolute;
+  z-index: 1;
+  background: var(--transparentGrey);
+  height: 50vh;
+  width: 50vw;
+}
+
 header {
   color: var(--lightBlue);
   text-decoration: underline;
   margin-bottom: 1em;
 }
-section {
+
+main section {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   height: 150px;
   width: 150px;
 }
+
 button {
   background-color: var(--lightGrey);
   min-height: 25px;
   min-width: 25px;
   border-radius: 2px;
   margin: 1px auto;
+}
+
+section>button {
   vertical-align: top;
   flex-basis: 33.333%;
 }
