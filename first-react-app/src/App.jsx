@@ -1,13 +1,11 @@
-
-import './interfaces/AppInterface';
-import './App.css';
-
-import { Board } from './reactComponents/Board.jsx'
+import "./interfaces/AppInterface";
+import "./App.css";
+import { Game } from "./reactComponents/Game.jsx";
 
 export default function App() {
   return (
-    <div>
-      <Board/>
+    <div id="app">
+      <Game />
     </div>
   );
 }

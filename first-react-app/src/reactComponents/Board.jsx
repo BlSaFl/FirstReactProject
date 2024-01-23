@@ -1,18 +1,34 @@
-import Square from './Square.jsx';
-import { useEffect, useState } from 'react';
-import { useBoard } from '../businessLogic/useBoard.jsx';
+import Square from "./Square.jsx";
+import { useState, useEffect } from "react";
+import { useBoard } from "../businessLogic/useBoard.jsx";
 
-//Needs css
-export function Board() {
-  const { handleClick, gameStatus, boardSquares } = useBoard("O");
+export function Board({ isFirstPlayer, boardSquares, onPlay }) {
+  const { handleClick, boardGameStatus, status } =
+    useBoard({isFirstPlayer, boardSquares, onPlay});
+
+  //Aktualisiere Spielstatus, wenn geklickt
+  useEffect(() => {
+    boardGameStatus();
+  }, [handleClick]);
 
   //JSX nur Variablen, Komponenten oder loops über Komponenten
   //Js eher keine for-loops, lieber map (filter, find etc.)
   return (
     <main>
-      <header>{gameStatus()}</header>
-      {Array(9).fill(null).map((item, index) => <Square key={index} value={boardSquares[index]} onSquareClick={() => handleClick(index)} /> )}
+      <header>{status}</header>
+      <section>
+        {Array(9)
+          .fill(null)
+          .map((item, index) => (
+            <Square
+              key={index}
+              value={boardSquares[index]}
+              onSquareClick={() => handleClick(index)}
+            />
+          ))}
+      </section>
+      <section id="gameOver"></section>
     </main>
   );
 }
-//prettier 
+//prettier
