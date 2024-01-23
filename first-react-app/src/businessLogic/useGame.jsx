@@ -7,7 +7,7 @@ export function useGame() {
 
   function handlePlay(nextSquares) {
     setHistory([...history, nextSquares]);
-    setXIsNext(!xIsNext);
+    setIsFirstPlayer(!isFirstPlayer);
   }
  
 

@@ -18,7 +18,7 @@ export function useBoard({isFirstPlayer, onPlay, boardSquares}) {
       } else {
         nextSquares[i] = "O";
       }
-      onplay(nextSquares);
+      onPlay(nextSquares);
     }
   }
 
