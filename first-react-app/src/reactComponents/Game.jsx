@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { History } from './History.jsx';
 import { Board } from "./Board.jsx";
-import { useGame } from "../businessLogic/useGame.jsx";
+import { useGame } from "../businessLogic/useGame.js";
 
 export function Game() {
-  const { isFirstPlayer, history, currentBoardSquares, handlePlay, moves } = useGame();
+  const { isFirstPlayer, history, currentBoardSquares, handlePlay } = useGame();
 
   return (
     <div id="game">
@@ -11,7 +12,7 @@ export function Game() {
         <Board isFirstPlayer={isFirstPlayer} boardSquares={currentBoardSquares} onPlay={handlePlay} />
       </div>
       <div>
-        <ol>{moves}</ol>
+        <History history={history}/>
       </div>
     </div>
   );

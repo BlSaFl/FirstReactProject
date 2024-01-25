@@ -1,12 +1,13 @@
 import Square from "./Square.jsx";
 import { useState, useEffect } from "react";
-import { useBoard } from "../businessLogic/useBoard.jsx";
+import { useBoard } from "../businessLogic/useBoard.js";
 
 export function Board({ isFirstPlayer, boardSquares, onPlay }) {
   const { handleClick, boardGameStatus, status } =
     useBoard({isFirstPlayer, boardSquares, onPlay});
 
   //Aktualisiere Spielstatus, wenn geklickt
+  //In dem Fall KEIN Effect Hook
   useEffect(() => {
     boardGameStatus();
   }, [handleClick]);

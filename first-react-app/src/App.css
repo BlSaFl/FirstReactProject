@@ -12,14 +12,15 @@ body {
 }
 
 #game {
+  height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   background: linear-gradient(315deg, rgb(100, 20, 20) 0%, rgb(20, 20, 20) 70%);
 }
 
 #game main {
-  height: 100vh;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -63,6 +64,23 @@ button {
   border-radius: 2px;
   margin: 1px auto;
 }
+
+#history > ol {
+  display: flex;
+  flex-direction: column;
+}
+
+button:disabled {
+  background-color: var(--transparentGrey);
+  color: white;
+}
+.descendingOrderList {
+  flex-direction: column;
+}
+.ascendingOrderList {
+  flex-direction: column-reverse;
+}
+
 
 section>button {
   vertical-align: top;
