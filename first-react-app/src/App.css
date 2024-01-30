@@ -5,21 +5,24 @@
   --knallViolett: rgb(108, 31, 126);
   --transparentGrey: rgba(100, 100, 100, 0.95);
 }
-
 body {
   background-color: var(--grey);
   margin: 0;
 }
-
-#game {
+#app {
+  background: linear-gradient(315deg, rgb(100, 20, 20) 0%, rgb(20, 20, 20) 70%);
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#game {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(315deg, rgb(100, 20, 20) 0%, rgb(20, 20, 20) 70%);
+  gap: 5%;
 }
-
 #game main {
   display: flex;
   position: relative;
@@ -27,13 +30,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-#game>div:nth-child(2) {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
-}
-
 #gameOver {
   visibility: collapse;
   position: absolute;
@@ -42,13 +38,11 @@ body {
   height: 50vh;
   width: 50vw;
 }
-
 header {
   color: var(--lightBlue);
   text-decoration: underline;
   margin-bottom: 1em;
 }
-
 main section {
   display: flex;
   flex-direction: row;
@@ -56,7 +50,6 @@ main section {
   height: 150px;
   width: 150px;
 }
-
 button {
   background-color: var(--lightGrey);
   min-height: 25px;
@@ -64,12 +57,15 @@ button {
   border-radius: 2px;
   margin: 1px auto;
 }
-
+#history{ 
+  border-style: groove;
+  width: 11rem;
+  background-color: var(--transparentGrey);
+}
 #history > ol {
   display: flex;
   flex-direction: column;
 }
-
 button:disabled {
   background-color: var(--transparentGrey);
   color: white;
@@ -80,8 +76,6 @@ button:disabled {
 .ascendingOrderList {
   flex-direction: column-reverse;
 }
-
-
 section>button {
   vertical-align: top;
   flex-basis: 33.333%;

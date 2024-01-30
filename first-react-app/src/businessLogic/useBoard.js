@@ -9,8 +9,9 @@ export function useBoard({ isFirstPlayer, onPlay, boardSquares }) {
         - Funktion zum zurücksetzen
     */
   const [status, setStatus] = useState("");
-
+  
   function handleClick(i) {
+    //console.log("isX in Logic of board before handleClick? " + isFirstPlayer);
     const nextSquares = boardSquares.slice();
     if (nextSquares[i] == null && calculateWinner(boardSquares) == null) {
       if (isFirstPlayer) {
@@ -18,7 +19,9 @@ export function useBoard({ isFirstPlayer, onPlay, boardSquares }) {
       } else {
         nextSquares[i] = "O";
       }
+      boardGameStatus();
       onPlay(nextSquares);
+      //console.log("isX in Logic of board after handleClick? " + isFirstPlayer);
     }
   }
 
@@ -57,8 +60,9 @@ export function useBoard({ isFirstPlayer, onPlay, boardSquares }) {
       setStatus("Game Over");
     }*/ else {
       setStatus("Next player: " + (isFirstPlayer ? "X" : "O"));
+      //console.log("setting Status to: Next player is " + (isFirstPlayer?"X":"O"))
     }
   };
 
-  return { handleClick, boardGameStatus, boardSquares, status };
+  return { handleClick, boardGameStatus, status };
 }

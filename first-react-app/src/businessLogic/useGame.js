@@ -3,8 +3,11 @@ import { useState } from "react";
 export function useGame() {
   const [isFirstPlayer, setIsFirstPlayer] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
+  // const [tmpHistory, setTmpHistory] = useState();
   const [currentMove, setCurrentMove] = useState(0);
-  const [styleOrderHistoryList, setStyleOrderHistoryList] = useState("descendingOrderButton")
+  const [styleOrderHistoryList, setStyleOrderHistoryList] = useState(
+    "descendingOrderButton"
+  );
   const currentBoardSquares = history[currentMove];
 
   function handlePlay(nextSquares) {
@@ -19,18 +22,14 @@ export function useGame() {
     setIsFirstPlayer(nextMove % 2 === 0);
   }
 
-  // function toggleOrderHistoryList() {
+  // function handleOrderHistory() {
   //   console.log("Hello");
-  //   if (style!=="descendingOrderList") {
-  //     setStyleOrderHistoryList("descendingOrderList")
-  //   } else { setStyleOrderHistoryList("ascendingOrderList")}
+  //   const temp = [...history]
+  //   temp.reverse();
+  //   setHistory(temp);
   // }
 
-  // const sortGameHistory = () => {
-  //   return {styleOrderHistoryList, onOrderHistoryClick: () => toggleOrderHistoryList()}
-  // }
-  
-  const gameHistory = history.map((aaa, move) => {
+  const gameHistory = history.map((item, move) => {
     let description;
     if (move == currentMove) {
       description = "You are at move # " + move;
@@ -39,13 +38,20 @@ export function useGame() {
     } else {
       description = "Go to game start";
     }
-    return { onHistoryClick: () => jumpTo(move),  description, move, currentMove };
+    return {
+      onHistoryClick: () => jumpTo(move),
+      description,
+      move,
+      currentMove,
+    };
   });
 
+  console.log(history, gameHistory);
   return {
     isFirstPlayer,
     history: gameHistory,
     currentBoardSquares,
     handlePlay,
+    /*onOrderHistoryClick: handleOrderHistory,*/
   };
 }

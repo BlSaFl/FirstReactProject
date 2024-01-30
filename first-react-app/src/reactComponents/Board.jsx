@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import { useBoard } from "../businessLogic/useBoard.js";
 
 export function Board({ isFirstPlayer, boardSquares, onPlay }) {
-  const { handleClick, boardGameStatus, status } =
+  const { handleClick, status, boardGameStatus } =
     useBoard({isFirstPlayer, boardSquares, onPlay});
-
+  //console.log("isX in Board? " + isFirstPlayer);
   //Aktualisiere Spielstatus, wenn geklickt
   //In dem Fall KEIN Effect Hook
+  //Gerade noch quickfix für verspäteten Status Update. Rendert Status zweimal!
   useEffect(() => {
     boardGameStatus();
   }, [handleClick]);
