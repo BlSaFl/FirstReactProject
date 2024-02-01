@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import { useBoard } from "../businessLogic/useBoard.js";
 
 export function Board({ isFirstPlayer, boardSquares, onPlay }) {
-  const { handleClick, status, boardGameStatus } = useBoard({
+  const { handleClick, status, boardGameStatus, winner } = useBoard({
     isFirstPlayer,
     boardSquares,
     onPlay,
   });
-
+  useEffect(() => {
+    boardGameStatus();
+  }, [handleClick]);
   //JSX nur Variablen, Komponenten oder loops über Komponenten
   //Js eher keine for-loops, lieber map (filter, find etc.)
   return (
@@ -25,7 +27,15 @@ export function Board({ isFirstPlayer, boardSquares, onPlay }) {
             />
           ))}
       </section>
-      <section id="gameOver"></section>
+      <section
+        id="gameOver"
+        className={
+          winner == null && status !== "Game Over" ? "collapsed" : "visible"
+        }
+      >
+        <h1>Game Over</h1>
+        <button>Restart Game</button>
+      </section>
     </main>
   );
 }

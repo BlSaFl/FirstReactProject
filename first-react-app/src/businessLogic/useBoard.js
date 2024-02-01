@@ -22,6 +22,7 @@ export function useBoard({ isFirstPlayer, onPlay, boardSquares }) {
       onPlay(nextSquares);
     }
   }
+
   const calculateWinner = (boardSquares) => {
     const lines = [
       [0, 1, 2],
@@ -53,11 +54,12 @@ export function useBoard({ isFirstPlayer, onPlay, boardSquares }) {
   const boardGameStatus = () => {
     if (calculateWinner(boardSquares)) {
       setStatus("Winner: " + winner);
-    } /* else if (boardSquares.filter((word) => word == null) == []) {
+    } else if (!boardSquares.includes(null)) {
       setStatus("Game Over");
-    }*/ else {
+    } else {
       setStatus("Next player: " + (isFirstPlayer ? "X" : "O"));
     }
   };
-  return { handleClick, boardGameStatus, status };
+
+  return { handleClick, boardGameStatus, status, winner };
 }

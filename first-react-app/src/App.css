@@ -31,12 +31,17 @@ body {
   align-items: center;
 }
 #gameOver {
-  visibility: collapse;
   position: absolute;
   z-index: 1;
   background: var(--transparentGrey);
   height: 50vh;
   width: 50vw;
+}
+.visible {
+  visibility: visible;
+}
+.collapsed {
+  visibility: collapse;
 }
 header {
   color: var(--lightBlue);
@@ -57,7 +62,7 @@ button {
   border-radius: 2px;
   margin: 1px auto;
 }
-#history{ 
+#history {
   border-style: groove;
   width: 11rem;
   background-color: var(--transparentGrey);
@@ -76,7 +81,7 @@ button:disabled {
 .ascendingOrderList {
   flex-direction: column-reverse;
 }
-section>button {
+section > button {
   vertical-align: top;
   flex-basis: 33.333%;
 }
