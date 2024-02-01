@@ -2,7 +2,7 @@ import Square from "./Square.jsx";
 import { useState, useEffect } from "react";
 import { useBoard } from "../businessLogic/useBoard.js";
 
-export function Board({ isFirstPlayer, boardSquares, onPlay }) {
+export function Board({ isFirstPlayer, boardSquares, onPlay, onRestartClick }) {
   const { handleClick, status, boardGameStatus, winner } = useBoard({
     isFirstPlayer,
     boardSquares,
@@ -16,7 +16,7 @@ export function Board({ isFirstPlayer, boardSquares, onPlay }) {
   return (
     <main>
       <header>{status}</header>
-      <section>
+      <section id="board">
         {Array(9)
           .fill(null)
           .map((item, index) => (
@@ -34,7 +34,8 @@ export function Board({ isFirstPlayer, boardSquares, onPlay }) {
         }
       >
         <h1>Game Over</h1>
-        <button>Restart Game</button>
+        <p>{status !== "Game Over" ? status : "No winners here"}</p>
+        <button onClick={onRestartClick}>Restart Game</button>
       </section>
     </main>
   );

@@ -23,6 +23,12 @@ export function useGame() {
     setIsSortedAsc(!isSortedAsc);
   }
 
+  function handleRestart() {
+    console.log("Hello, Restart here");
+    setHistory([Array(9).fill(null)]);
+    jumpTo(0);
+  }
+
   function getSortedHistory() {
     const unsortedHistory = history.map((item, move) => {
       let description;
@@ -49,6 +55,7 @@ export function useGame() {
     currentBoardSquares,
     handlePlay,
     onOrderHistoryClick,
+    handleRestart,
   };
 }
 

@@ -9,6 +9,7 @@ export function Game() {
     currentBoardSquares,
     handlePlay,
     onOrderHistoryClick,
+    handleRestart,
   } = useGame();
 
   return (
@@ -18,6 +19,7 @@ export function Game() {
           isFirstPlayer={isFirstPlayer}
           boardSquares={currentBoardSquares}
           onPlay={handlePlay}
+          onRestartClick={handleRestart}
         />
       </div>
       <div>

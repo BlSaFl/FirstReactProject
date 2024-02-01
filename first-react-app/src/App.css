@@ -1,8 +1,9 @@
 :root {
   --grey: #1e1e1e;
   --lightGrey: #aeaeae;
-  --lightBlue: rgb(116, 199, 235);
-  --knallViolett: rgb(108, 31, 126);
+  --lightBlue: rgb(170, 210, 220);
+  --darkBlue: rgb(20, 20, 100);
+  --darkRed: rgb(100, 20, 20);
   --transparentGrey: rgba(100, 100, 100, 0.95);
 }
 body {
@@ -10,7 +11,7 @@ body {
   margin: 0;
 }
 #app {
-  background: linear-gradient(315deg, rgb(100, 20, 20) 0%, rgb(20, 20, 20) 70%);
+  background: linear-gradient(315deg, var(--darkRed) 0%, rgb(20, 20, 20) 70%);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -36,12 +37,30 @@ body {
   background: var(--transparentGrey);
   height: 50vh;
   width: 50vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 10px 2px rgb(100, 20, 20);
+  color: white;
 }
-.visible {
-  visibility: visible;
+#gameOver > h1 {
+  color: var(--darkRed);
+  padding: 5px;
+  background-color: grey;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px;
 }
-.collapsed {
-  visibility: collapse;
+#gameOver > button {
+  border-radius: 5px;
+  padding: 5px;
+  font-size: medium;
+  color: var(--darkBlue);
+  transition: 0.3s;
+}
+#gameOver > button:hover {
+  background-color: var(--lightBlue);
 }
 header {
   color: var(--lightBlue);
@@ -60,6 +79,10 @@ button {
   min-height: 25px;
   min-width: 25px;
   border-radius: 2px;
+}
+#board > button {
+  vertical-align: top;
+  flex-basis: 33.333%;
   margin: 1px auto;
 }
 #history {
@@ -75,13 +98,9 @@ button:disabled {
   background-color: var(--transparentGrey);
   color: white;
 }
-.descendingOrderList {
-  flex-direction: column;
+.visible {
+  visibility: visible;
 }
-.ascendingOrderList {
-  flex-direction: column-reverse;
-}
-section > button {
-  vertical-align: top;
-  flex-basis: 33.333%;
+.collapsed {
+  visibility: collapse;
 }
